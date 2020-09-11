@@ -1,22 +1,10 @@
-from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from flask import request, make_response, redirect, render_template, session, url_for, flash
 import unittest
+from app import create_app
+from app.forms import LoginForm
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-
-app.config['SECRET_KEY'] = 'SUPER SECRETO'
-
+app = create_app()
 alls = ['Buy coffe', 'Send purchase request', 'Deliver video to producer']
-
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Send')
 
 
 @app.cli.command()
