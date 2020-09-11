@@ -36,8 +36,6 @@ class MainTest(TestCase):
 
         self.assertRedirects(response, url_for('index'))
 
-
-"""
     def test_auth_blueprint_exists(self):
         self.assertIn('auth', self.app.blueprints)
 
@@ -59,4 +57,3 @@ class MainTest(TestCase):
 
         response = self.client.post(url_for('auth.login'), data=fake_form)
         self.assertRedirects(response, url_for('index'))
-"""
