@@ -33,24 +33,14 @@ def index():
     return response
 
 
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello', methods=['GET'])
 def hello():
     user_ip = session.get('user_ip')
-    login_form = LoginForm()
     username = session.get('username')
     context = {
         'user_ip': user_ip,
         'alls': alls,
-        'login_form': login_form,
         'username': username,
     }
-
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session['username'] = username
-
-        flash('Username registered successfully!')
-
-        return redirect(url_for('index'))
 
     return render_template('hello.html', **context)
