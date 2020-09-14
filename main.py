@@ -2,9 +2,9 @@ from flask import request, make_response, redirect, render_template, session, ur
 import unittest
 from app import create_app
 from app.forms import LoginForm
+from app.databse import get_users, get_alls
 
 app = create_app()
-alls = ['Buy coffe', 'Send purchase request', 'Deliver video to producer']
 
 
 @app.cli.command()
@@ -39,7 +39,7 @@ def hello():
     username = session.get('username')
     context = {
         'user_ip': user_ip,
-        'alls': alls,
+        'alls': get_alls(username=username)[0],
         'username': username,
     }
 
