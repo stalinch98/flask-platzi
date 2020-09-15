@@ -3,5 +3,5 @@ flask-bootstrap
 flask-wtf
 flask-testing
 blinker
-
 psycopg2
+flask-login
